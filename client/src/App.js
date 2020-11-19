@@ -3,13 +3,15 @@ import { Container, AppBar, Typography, Grow, Grid } from '@material-ui/core';
 import Form from './components/Form/Form';
 import Posts from './components/Posts/Posts';
 import fitted from './images/fitted-logo.png';
+import useStyles from './styles';
 
 const App = () => {
+    const classes = useStyles();
     return(
         <Container maxwidth='lg'>
-            <AppBar position="static" color="inherit">
-                <Typography variant="h2" align="center">Fitted</Typography>
-                <img src={fitted} alt="outfits" height="60" /> 
+            <AppBar className={classes.appBar} position="static" color="inherit">
+                <Typography className={classes.heading} variant="h2" align="center">Fitted</Typography>
+                <img className={classes.image} src={fitted} alt="outfits" height="60" /> 
             </AppBar>
             <Grow in>
                 <Container>
