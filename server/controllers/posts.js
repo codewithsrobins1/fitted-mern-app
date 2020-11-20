@@ -1,5 +1,7 @@
 import PostMessage from '../models/postMessage.js';
 
+
+//GET ALL POSTS
 export const getPosts = async (req, res) => {
     try{
         const postMessages = await PostMessage.find();
@@ -12,6 +14,7 @@ export const getPosts = async (req, res) => {
     }
 }
 
+//CREATE A POST
 export const createPost = async (req, res) => {
     const post = req.body;
     const newPost = new PostMessage(post);
@@ -25,4 +28,18 @@ export const createPost = async (req, res) => {
             message: error.message
         })
     }
+}
+
+//UPDATE A POST
+export const updatePost = async (req, res) => {
+    //Params is the id coming form the url
+    const { id: _id } = req.params;
+    const post = req.body;
+
+    if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send('No post with that id');
+
+    //Get access to the updated post
+    const updatedPost = await PostMessage.findByIdAndUpdate(_id, post, { new: true })
+
+    res.json(updatedPost);
 }
