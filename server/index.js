@@ -3,10 +3,7 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import postRoutes from './routes/posts.js';
-
 const app = express();
-
-app.use('/posts', postRoutes);
 
 //Parse Files
 app.use(bodyParser.json({
@@ -20,8 +17,12 @@ app.use(bodyParser.urlencoded({
 
 app.use(cors());
 
+app.use('/posts', postRoutes);
+
+
+
 //Connect to Mongo DB
-const MONGO_CONNECTION_URL = 'mongodb+srv://fitted-admin:test123@bloggerapplication.hv64k.mongodb.net/<dbname>?retryWrites=true&w=majority';
+const MONGO_CONNECTION_URL = 'mongodb+srv://fitted-admin:test123@bloggerapplication.hv64k.mongodb.net/FittedApp?retryWrites=true&w=majority';
 const PORT = process.env.PORT || 5000;
 
 mongoose.connect(MONGO_CONNECTION_URL, {useNewUrlParser: true, useUnifiedTopology: true})
