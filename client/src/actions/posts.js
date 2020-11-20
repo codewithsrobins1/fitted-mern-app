@@ -1,6 +1,6 @@
 import * as api from '../api';
 
-//Action Creators = Functions that return actions
+//Action Creators 
 export const getPosts = () => async(dispatch) => {
     try {
         const { data } = await api.fetchPosts();
@@ -11,5 +11,15 @@ export const getPosts = () => async(dispatch) => {
     }
     catch(err){
         console.log(err.message)
+    }
+}
+
+export const createPost = (post) => async (dispatch) => {
+    try {
+        const { data } = await api.createPost(post);
+        dispatch({type: 'CREATE_POST', payload: data});
+    }
+    catch(err){
+        console.log(err.message);
     }
 }

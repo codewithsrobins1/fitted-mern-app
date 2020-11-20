@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { TextField, Button, Typography, Paper } from '@material-ui/core';
+import { useDispatch } from 'react-redux';
 import useStyles from './styles';
 import FileBase from 'react-file-base64';
+import { createPost } from '../../actions/posts';
 
 const Form = () => {
     const [postData, setPostData] = useState({
@@ -12,9 +14,13 @@ const Form = () => {
         selectedFile: ''
     });
     const classes = useStyles();
-    const handleSubmit = () => {
+    const dispatch = useDispatch();
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        dispatch(createPost(postData));
     }
+
     const clear = () => {
 
     }
@@ -48,7 +54,7 @@ const Form = () => {
                     })}
                 />
             <div className={classes.fileInput}>
-                <FileBase type="file"multiple={false}
+                <FileBase type="file" multiple={false}
                     onDone={({base64}) => setPostData({
                         ...postData,
                         selectedFile: base64
