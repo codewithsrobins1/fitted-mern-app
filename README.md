@@ -23,6 +23,9 @@ https://fitted-app.netlify.app/
 ## Built With
 
 * React
+* MongoDB
+* Express
+* Node
 * Redux
 
 ## Dependencies
