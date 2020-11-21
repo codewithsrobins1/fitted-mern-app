@@ -50,7 +50,7 @@ const Form = ({ currentId, setCurrentId }) => {
     return (
         <Paper className={classes.paper}>
             <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
-    <Typography variant="h6">{currentId ? 'Editing a Fit' : 'Creating a Fit'}</Typography>
+            <Typography variant="h6">{currentId ? 'Editing a Fit' : 'Create a Fit'}</Typography>
                 <TextField name="creator" variant="outlined" label="Creator" fullWidth value={postData.creator}
                     onChange={(e) => setPostData({
                         ...postData,                //spread post data, otherwise creator only gets updated, other data can persist
@@ -59,19 +59,19 @@ const Form = ({ currentId, setCurrentId }) => {
                 />
                 <TextField name="title" variant="outlined" label="Title" fullWidth value={postData.title}
                     onChange={(e) => setPostData({
-                        ...postData,                //spread post data, otherwise title only gets updated, other data can persist
+                        ...postData,                
                         title: e.target.value
                     })}
                 />
                 <TextField name="comment" variant="outlined" label="Comment" fullWidth value={postData.comment}
                     onChange={(e) => setPostData({
-                        ...postData,                //spread post data, otherwise comment only gets updated, other data can persist
+                        ...postData,                
                         comment: e.target.value
                     })}
                 />
                 <TextField name="tags" variant="outlined" label="Tags" fullWidth value={postData.tags} 
                     onChange={(e) => setPostData({
-                        ...postData,                //spread post data, otherwise tags only gets updated, other data can persist
+                        ...postData,                
                         tags: e.target.value.split(',')
                     })}
                 />

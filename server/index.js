@@ -5,6 +5,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import postRoutes from './routes/posts.js';
 const app = express();
+
 dotenv.config();
 
 //Parse Files
@@ -20,6 +21,10 @@ app.use(bodyParser.urlencoded({
 app.use(cors());
 
 app.use('/posts', postRoutes);
+
+app.get('/', (req, res) => {
+    res.send('Welcome to Fitted-App API');
+})
 
 //Connect to Mongo DB
 const PORT = process.env.PORT || 5000;

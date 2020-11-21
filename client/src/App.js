@@ -4,7 +4,7 @@ import { Container, AppBar, Typography, Grow, Grid } from '@material-ui/core';
 import { getPosts } from './actions/posts';
 import Form from './components/Form/Form';
 import Posts from './components/Posts/Posts';
-import fitted from './images/fitted-logo.png';
+import fitted from './images/fitted-logo.jpg';
 import useStyles from './styles';
 
 const App = () => {
