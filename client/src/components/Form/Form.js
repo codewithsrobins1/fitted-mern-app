@@ -34,7 +34,6 @@ const Form = ({ currentId, setCurrentId }) => {
             dispatch(createPost(postData));
         }
         clear();
-
     }
 
     const clear = () => {
@@ -73,7 +72,7 @@ const Form = ({ currentId, setCurrentId }) => {
                 <TextField name="tags" variant="outlined" label="Tags" fullWidth value={postData.tags} 
                     onChange={(e) => setPostData({
                         ...postData,                //spread post data, otherwise tags only gets updated, other data can persist
-                        tags: e.target.value
+                        tags: e.target.value.split(',')
                     })}
                 />
             <div className={classes.fileInput}>
