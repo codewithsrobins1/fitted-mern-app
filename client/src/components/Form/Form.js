@@ -28,22 +28,30 @@ const Form = ({ currentId, setCurrentId }) => {
 
         //If there is an id, updating. Otherwise create a post
         if(currentId){
-            dispatch(updatePost(currentId, postData))
+            dispatch(updatePost(currentId, postData));
         }
         else{
             dispatch(createPost(postData));
         }
+        clear();
 
     }
 
     const clear = () => {
-
+        setCurrentId(null);
+        setPostData({
+            creator: '',
+            title: '',
+            comment: '',
+            tags: '',
+            selectedFile: ''
+        })
     }
 
     return (
         <Paper className={classes.paper}>
             <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
-                <Typography variant="h6">Create a Fit</Typography>
+    <Typography variant="h6">{currentId ? 'Editing a Fit' : 'Creating a Fit'}</Typography>
                 <TextField name="creator" variant="outlined" label="Creator" fullWidth value={postData.creator}
                     onChange={(e) => setPostData({
                         ...postData,                //spread post data, otherwise creator only gets updated, other data can persist
