@@ -12,7 +12,7 @@ https://fitted-app.netlify.app/
 
 ## Objectives
 
-* Build a fullstack MERN application
+* Build a fullstack MERN application and deploy to Heroku
 * Implement Material UI for UI design
 
 ## Features to Possibly Implement in Future
