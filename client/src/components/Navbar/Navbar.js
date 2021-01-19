@@ -4,6 +4,7 @@ import { AppBar, Avatar, Typography, Toolbar, Button } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 import fitted from '../../images/fitted-logo.jpg';
 import useStyles from './styles';
+import decode from 'jwt-decode';
 
 
 const Navbar = () => {
@@ -14,7 +15,14 @@ const Navbar = () => {
     const location = useLocation();                                                 //access login change for setting the user
 
     useEffect(() => {
-        // const token = user?.token;
+        const token = user?.token;
+
+        //Log user out if token has expired
+        if(token){
+            const decodedToken = decode(token);
+            if(decodedToken.exp * 1000 < new Date().getTime()) logout();
+        }
+
         setUser(JSON.parse(localStorage.getItem('profile')))
     }, [location])
 

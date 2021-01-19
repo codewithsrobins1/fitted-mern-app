@@ -7,27 +7,47 @@ import { useHistory } from 'react-router-dom';
 import Icon from './icon';
 import useStyles from './styles';
 import Input from './Input';
+import { signin, signup } from '../../actions/auth';
+
+const initialState = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    confirmPassword: ''
+}
 
 const Auth = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [isSignup, setIsSignup] = useState(false);
+    const [formData, setFormData] = useState(initialState)
     const classes = useStyles();
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const handleSubmit = () => {
-
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        
+        if(isSignup) {
+            //Pass form data to DB and navigate
+            dispatch(signup(formData, history))
+        }
+        else {
+            //Sign in User
+            dispatch(signin(formData, history))
+        }
     }
 
-    const handleChange = () => {
-
+    const handleChange = (e) => {
+        //Spread all properties in the form, but change specific value for target input
+        setFormData({ ...formData, [e.target.name]: e.target.value })  
     }
 
     const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword);
 
     const switchMode = () => {
         setIsSignup((prevSignUp) => !prevSignUp)
-        handleShowPassword(false);
+        setShowPassword(false);
     }
 
     const googleSuccess = async (res) => {

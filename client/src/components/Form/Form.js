@@ -7,7 +7,6 @@ import { createPost, updatePost } from '../../actions/posts';
 
 const Form = ({ currentId, setCurrentId }) => {
     const [postData, setPostData] = useState({
-        creator: '',
         title: '',
         comment: '',
         tags: '',
@@ -16,6 +15,7 @@ const Form = ({ currentId, setCurrentId }) => {
     const post = useSelector((state) => currentId ? state.posts.find((p) => p._id === currentId) : null );
     const classes = useStyles();
     const dispatch = useDispatch();
+    const user = JSON.parse(localStorage.getItem('profile'));
 
     useEffect(() => {
         if(post){
@@ -27,19 +27,19 @@ const Form = ({ currentId, setCurrentId }) => {
         e.preventDefault();
 
         //If there is an id, updating. Otherwise create a post
-        if(currentId){
-            dispatch(updatePost(currentId, postData));
+        if(currentId === 0){
+            dispatch(createPost({ ...postData, name: user?.result?.name }))
+            clear();
         }
         else{
-            dispatch(createPost(postData));
+            dispatch(updatePost(currentId, { ...postData, name: user?.result?.name }));
+            clear();
         }
-        clear();
     }
 
     const clear = () => {
         setCurrentId(null);
         setPostData({
-            creator: '',
             title: '',
             comment: '',
             tags: '',
@@ -47,19 +47,23 @@ const Form = ({ currentId, setCurrentId }) => {
         })
     }
 
+    if(!user?.result?.name){
+        return(
+            <Paper className={classes.paper}>
+                <Typography variant="h6" align="center">
+                    Please Sign In to post an outfit and like other outfits.
+                </Typography>
+            </Paper>
+        )
+    }
+
     return (
         <Paper className={classes.paper}>
             <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
             <Typography variant="h6">{currentId ? 'Editing a Fit' : 'Create a Fit'}</Typography>
-                <TextField name="creator" variant="outlined" label="Creator" fullWidth value={postData.creator}
-                    onChange={(e) => setPostData({
-                        ...postData,                //spread post data, otherwise creator only gets updated, other data can persist
-                        creator: e.target.value
-                    })}
-                />
                 <TextField name="title" variant="outlined" label="Title" fullWidth value={postData.title}
                     onChange={(e) => setPostData({
-                        ...postData,                
+                        ...postData,                //spread post data, otherwise creator only gets updated, other data can persist
                         title: e.target.value
                     })}
                 />
