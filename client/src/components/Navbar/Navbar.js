@@ -19,7 +19,7 @@ const Navbar = () => {
 
         //Log user out if token has expired
         if(token){
-            const decodedToken = decode(token);
+            const decodedToken = decode(token); 
             if(decodedToken.exp * 1000 < new Date().getTime()) logout();
         }
 

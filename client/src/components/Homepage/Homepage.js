@@ -4,11 +4,9 @@ import { getPosts } from '../../actions/posts';
 import { Container, Grid, Grow } from '@material-ui/core';
 import Posts from '../Posts/Posts';
 import Form from '../Form/Form';
-import useStyles from './styles';
 
 const Homepage = () => {
-    const [currentId, setCurrentId] = useState(null);
-    const classes = useStyles();
+    const [currentId, setCurrentId] = useState(0);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -18,7 +16,7 @@ const Homepage = () => {
     return (
         <Grow in>
         <Container>
-            <Grid className={classes.mainContainer} container justify="space-between" alignItems="stretch" spacing={3}>
+            <Grid container justify="space-between" alignItems="stretch" spacing={3}>
                 <Grid item xs={12} sm={7}>
                     <Posts setCurrentId={setCurrentId}/>
                 </Grid>

@@ -18,12 +18,20 @@ const Form = ({ currentId, setCurrentId }) => {
     const user = JSON.parse(localStorage.getItem('profile'));
 
     useEffect(() => {
-        if(post){
-            setPostData(post);
-        }
+        if(post) setPostData(post);
     }, [post])
 
-    const handleSubmit = (e) => {
+    const clear = () => {
+        setCurrentId(0);
+        setPostData({
+            title: '',
+            comment: '',
+            tags: '',
+            selectedFile: ''
+        })
+    }
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         //If there is an id, updating. Otherwise create a post
@@ -37,15 +45,7 @@ const Form = ({ currentId, setCurrentId }) => {
         }
     }
 
-    const clear = () => {
-        setCurrentId(null);
-        setPostData({
-            title: '',
-            comment: '',
-            tags: '',
-            selectedFile: ''
-        })
-    }
+    
 
     if(!user?.result?.name){
         return(
