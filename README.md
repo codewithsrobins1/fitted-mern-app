@@ -66,13 +66,5 @@ npm start
 *	Form.js - Serves as the landing page for the application
 *	Posts.js - The navigation bar for all pages
 * Post.js - Component that shows all the movies after a search a complete and "More Details" is clicked
-
-## Component Tree
-
-To help visualize the structure of the components, please reference the below structure,
-
-- App.js
-  - Posts
-    - Post
-  - Forms
-
+* Auth.js - Form for sign up and signing in
+* Navbar.js - Navbar of website that changes whether used is logged in or not
