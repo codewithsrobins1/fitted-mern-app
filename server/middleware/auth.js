@@ -16,7 +16,7 @@ const auth = async (req, res, next) => {
             decodedData = jwt.verify(token, 'test');     //pass token and SECRET from controllers->users.js
             
             //Store users id in req.userId
-            req.userId = decodedData?.id;
+            req.userId = decodedData.id;
         } else {
             decodedData = jwt.decode(token)
             req.userId = decodedData?.sub;              //sub is googles id that differentiates from every google user
