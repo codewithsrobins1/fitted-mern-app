@@ -50,12 +50,16 @@ To get a local copy up and running follow these steps using your terminal.
 ```sh
 git clone https://github.com/codewithsrobins1/fitted-mern-app
 ```
-2. Install NPM packages
+2. Change to client directory
+```sh
+cd client
+```
+3. Install NPM packages
 ```sh
 npm install i
 
 ```
-3. Start Client
+4. Start Client
 ```sh
 npm start
 
