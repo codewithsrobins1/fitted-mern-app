@@ -10,6 +10,7 @@ import useStyles from './styles';
 import { deletePost, likePost } from '../../../actions/posts';
 
 const Post = ({ post, setCurrentId }) => {
+    console.log('POSTs', post)
     const classes = useStyles();
     const dispatch = useDispatch();
     const user = JSON.parse(localStorage.getItem('profile'));
@@ -52,6 +53,9 @@ const Post = ({ post, setCurrentId }) => {
             <Typography className={classes.title} variant="h5" gutterBottom>{post.title}</Typography>
             <CardContent>
                 <Typography variant="body2" color="textSecondary" component="p">{post.comment}</Typography>
+            </CardContent>
+            <CardContent>
+                <Typography variant="body2" color="textSecondary" component="p">- {post.name}</Typography>
             </CardContent>
             <CardActions className={classes.cardActions}>
                 <Button size="small" color="primary" disabled={!user?.result} onClick={() => dispatch(likePost(post._id))}>
