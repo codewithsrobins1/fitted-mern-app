@@ -24,7 +24,7 @@ const Navbar = () => {
         }
 
         setUser(JSON.parse(localStorage.getItem('profile')))
-    }, [location])
+    }, [location])  //update when the location changes
 
     const logout = () => {
         dispatch({
