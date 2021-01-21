@@ -20,5 +20,8 @@ export default makeStyles((theme) => ({
   },
   buttonSubmit: {
     marginBottom: 10,
+  },
+  successToast: {
+    backgroundColor: '#33ac2e'
   }
 }));

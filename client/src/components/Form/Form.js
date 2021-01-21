@@ -52,24 +52,10 @@ const Form = ({ currentId, setCurrentId }) => {
     const toastTypeMsg = (type, msg) => {
         switch(type){
             case 'error':
-              return toast.error(`${msg}`, {
-                position: "bottom-right",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined
-              });
+              return toast.error(`${msg}`, {});
             case 'success':
               return toast.success(`${msg}`, {
-                position: "bottom-right",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined
+                className: `${classes.successToast}`
               })
             default:
                 break;
