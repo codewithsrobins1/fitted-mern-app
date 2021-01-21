@@ -19,7 +19,7 @@ const auth = async (req, res, next) => {
             req.userId = decodedData.id;
         } else {
             decodedData = jwt.decode(token)
-            req.userId = decodedData?.sub;              //sub is googles id that differentiates from every google user
+            req.userId = decodedData.sub;              //sub is googles id that differentiates from every google user
         }
         next();
     }
