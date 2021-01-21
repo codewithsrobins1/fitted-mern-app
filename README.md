@@ -8,7 +8,7 @@ A fullstack MERN application where users can save their outfits or articles of c
 
 ## Link to Live Site
 
-https://fitted-app.netlify.app/
+https://fittedapp.netlify.app/
 
 ## Objectives
 
