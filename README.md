@@ -13,12 +13,15 @@ https://fitted-app.netlify.app/
 ## Objectives
 
 * Build a fullstack MERN application and deploy to Heroku
+* Implement authentification for users (used JWT, localstorage, and bcrypt)
 * Implement Material UI for UI design
 
 ## Features to Possibly Implement in Future
 
-* Authentification for users
+* Pagination
+* When clicking a post, can see a new tab with the image enlarged
 * Users can share their outfits with a generated link
+* More modern design 
 
 ## Built With
 
