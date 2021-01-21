@@ -54,9 +54,6 @@ const Post = ({ post, setCurrentId }) => {
             <CardContent>
                 <Typography variant="body2" color="textSecondary" component="p">{post.comment}</Typography>
             </CardContent>
-            <CardContent>
-                <Typography variant="body2" color="textSecondary" component="p">- {post.name}</Typography>
-            </CardContent>
             <CardActions className={classes.cardActions}>
                 <Button size="small" color="primary" disabled={!user?.result} onClick={() => dispatch(likePost(post._id))}>
                     <Likes />
